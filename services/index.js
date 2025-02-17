@@ -19,7 +19,20 @@ const monsterStats = document.querySelector("#monsterStats");
 const monsterNameText = document.querySelector("#monsterName");
 const monsterHealthText = document.querySelector("#monsterHealth");
 
-const locations = [];
+const locations = [
+    {
+        name: "Town Square",
+        "button text": ["Go to Store", "Go to Cave", "Fight Dragon"],
+        "button functions": [goStore, goCave, fightDragon],
+        text: "You are in the town square"
+    },
+    {
+        name: "Store",
+        "button text": ["Buy 10 health (10 gold)", "Buy Weapon (30 gold)", "Go to Town Square"],
+        "button functions": [buyHealth, buyWeapon, goTown],
+        text: "You enter the store"
+    }
+];
 
 /*Initialise buttons*/
 button1.onclick = goStore;
@@ -27,29 +40,24 @@ button2.onclick = goCave;
 button3.onclick = fightDragon;
 
 function update(location){
-
+    button1.innerText = location["button text"][0];
+    button2.innerText = location["button text"][1];
+    button3.innerText = location["button text"][2];
+    text.innerText = location.text;
+    
+    button1.onclick = location["button functions"][0];
+    button2.onclick = location["button functions"][1];
+    button3.onclick = location["button functions"][2];
 }
 
 function goTown(){
-    button1.innerText = "Go to store";
-    button2.innerText = "Go to cave";
-    button3.innerText = "Fight dragon";
-    text.innerText = "You are back in the town square";
-    
-    button1.onclick = goStore;
-    button2.onclick = goCave;
-    button3.onclick = fightDragon;
+    update(locations[0]);
+    document.body.style.backgroundImage = "url(/styles/images/town.jpg)";
 };
 
 function goStore() {
-    button1.innerText = "Buy 10 health (10 gold)";
-    button2.innerText = "Buy Weapon (30 gold)";
-    button3.innerText = "Go to Town Square";
-    text.innerText = "You enter the store";
-
-    button1.onclick = buyHealth;
-    button2.onclick = buyWeapon;
-    button3.onclick = goTown;
+    update(locations[1]);
+    document.body.style.backgroundImage = "url(/styles/images/store.jpg)";
 };
 
 function buyHealth(){
