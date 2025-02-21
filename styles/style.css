@@ -43,3 +43,17 @@ body {
 .stat span {
     font-weight: bolder;
 }
+
+.charInfo {
+    max-width: 500px;
+    max-height: 400px;
+    background-color: lightgray;
+    color: rgb(255, 255, 255);
+    margin: 0 auto;
+    padding: 10px;
+}
+
+.charInfo textarea{
+    margin: auto;
+    min-width: 450px;
+}
